@@ -1,0 +1,13 @@
+{
+  "name": "proxy",
+  "version": "1.0.0",
+  "description": "Simple local proxy",
+  "main": "index.js",
+  "author": "Mateusz Wira",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
