@@ -16,8 +16,6 @@ app.use('/', function (req, res) {
     if (req.headers['content-type'] === 'application/x-www-form-urlencoded') {
         body = querystring.stringify(body);
     }
-    console.log(body);
-    console.log('\n');
     let options = {
         url: req.url.slice(1),
         method: req.method,
@@ -25,10 +23,17 @@ app.use('/', function (req, res) {
         data: body,
         httpsAgent: new https.Agent({rejectUnauthorized: false}),
     };
+    console.log(req.url.slice(1));
+    console.log(req.headers);
+    console.log(body);
 
     axios(options).then(function (response) {
         res.json(response.data);
         res.send();
+    }).catch(function (reason) {
+        console.log(reason.response.data)
+    }).finally(function () {
+        console.log('-----------------------\n');
     });
 });
 
