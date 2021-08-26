@@ -20,9 +20,11 @@ app.use('/', function (req, res) {
         url: req.url.slice(1),
         method: req.method,
         headers: req.headers,
-        data: body,
         httpsAgent: new https.Agent({rejectUnauthorized: false}),
     };
+    if (Object.keys(body).length > 0) {
+        options.data = body;
+    }
     console.log(req.url.slice(1));
     console.log(req.headers);
     console.log(body);
